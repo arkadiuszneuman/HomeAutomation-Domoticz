@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { SettingsComponent } from './settings/settings.component';
+import { SettingsService } from './settings/service/settings.service'
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -24,9 +25,9 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    JsonpModule
+    JsonpModule,
   ],
-  providers: [],
+  providers: [SettingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
