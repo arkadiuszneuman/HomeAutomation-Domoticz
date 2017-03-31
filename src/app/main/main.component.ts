@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Response, Jsonp, Headers, RequestOptions } from '@angular/http';
+import { SettingsService, Settings } from '../settings/service/settings.service'
+import { DomoticzApiService } from './service/domoticz-api.service';
 
 @Component({
   selector: 'app-main',
@@ -8,10 +9,16 @@ import { Http, Response, Jsonp, Headers, RequestOptions } from '@angular/http';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private jsonp: Jsonp, private http: Http) { }
+  private lights;
+  constructor(private domoticzApi: DomoticzApiService) { }
 
   ngOnInit() {
-    
+    this.domoticzApi.getLights()
+      .subscribe(lights => {
+        this.lights = lights;
+      });
+    var  x = 123;
+    ++x;
   }
 
 }
