@@ -9,7 +9,9 @@ import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
+import { LightComponent } from './main/components/light/light.component';
 import { SettingsComponent } from './settings/settings.component';
+
 import { SettingsService } from './settings/service/settings.service'
 import { DomoticzApiService } from './main/service/domoticz-api.service';
 
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     MainComponent,
-    SettingsComponent
+    SettingsComponent,
+    LightComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

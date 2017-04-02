@@ -1,0 +1,5 @@
+<p>
+  <span *ngFor="let light of lights">
+    <md-slide-toggle [checked]="light.Status == 'On'" [disabled]="light.isDisabled" (change)="toggleLight(light)">{{light.Name}}</md-slide-toggle>
+  </span>
+</p>
