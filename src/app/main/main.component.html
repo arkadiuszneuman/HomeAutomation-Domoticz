@@ -1,3 +1,8 @@
 <p>
-  <li *ngFor="let light of lights">{{light.Name}}</li>
+  <li *ngFor="let light of lights">{{light.Name}} 
+    <button (click)="toggleLight(light)">
+      <span *ngIf="light.Status == 'On'">Off</span>
+      <span *ngIf="light.Status == 'Off'">On</span>
+    </button>
+  </li>
 </p>

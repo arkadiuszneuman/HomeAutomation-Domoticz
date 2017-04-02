@@ -17,4 +17,18 @@ export class DomoticzApiService {
     return this.http.get(`${this.server}json.htm?type=devices&filter=light&used=true&username=${btoa(settings.login)}&password=${btoa(settings.password)}`)
       .map(c => c.json().result);
   }
+
+  public switchOffLight(light) {
+    const settings = this.settingsService.get();
+
+    return this.http.get(`${this.server}json.htm?type=command&param=switchlight&idx=${light.idx}&switchcmd=Off&username=${btoa(settings.login)}&password=${btoa(settings.password)}`)
+      .map(c => c.json().result);
+  }
+
+  public switchOnLight(light) {
+    const settings = this.settingsService.get();
+
+    return this.http.get(`${this.server}json.htm?type=command&param=switchlight&idx=${light.idx}&switchcmd=On&username=${btoa(settings.login)}&password=${btoa(settings.password)}`)
+      .map(c => c.json().result);
+  }
 }
