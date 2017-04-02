@@ -1,8 +1,5 @@
 <p>
-  <li *ngFor="let light of lights">{{light.Name}} 
-    <button (click)="toggleLight(light)">
-      <span *ngIf="light.Status == 'On'">Off</span>
-      <span *ngIf="light.Status == 'Off'">On</span>
-    </button>
-  </li>
+  <span *ngFor="let light of lights">
+    <md-slide-toggle [checked]="light.Status == 'On'" (click)="toggleLight(light)">{{light.Name}}</md-slide-toggle>
+  </span>
 </p>
