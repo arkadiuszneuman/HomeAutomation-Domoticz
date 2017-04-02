@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 
 export class Settings {
-  public login;
-  public password;
+  public login: string;
+  public password: string;
+
+  public openStreetMapApiKey: string;
 }
 
 @Injectable()
@@ -11,6 +13,7 @@ export class SettingsService {
   private settings: Settings;
   private domoticzLoginName = "domoticzLogin";
   private domoticzPassName = "domoticzPass";
+  private openStreetMapApiKey = "openStreetMapApiKey";
 
   constructor() { 
   }
@@ -20,6 +23,7 @@ export class SettingsService {
     this.settings = new Settings();
     this.settings.login = localStorage.getItem(this.domoticzLoginName);
     this.settings.password = localStorage.getItem(this.domoticzPassName);
+    this.settings.openStreetMapApiKey = localStorage.getItem(this.openStreetMapApiKey);
 
     return this.settings;
   }
@@ -36,7 +40,8 @@ export class SettingsService {
 
       this.settings = Object.assign({}, settings);
 
-      localStorage.setItem(this.domoticzLoginName, this.settings.login)
-      localStorage.setItem(this.domoticzPassName, this.settings.password)
+      localStorage.setItem(this.domoticzLoginName, this.settings.login);
+      localStorage.setItem(this.domoticzPassName, this.settings.password);
+      localStorage.setItem(this.openStreetMapApiKey, this.settings.openStreetMapApiKey);
   }
 }
