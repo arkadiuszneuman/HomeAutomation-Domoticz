@@ -11,9 +11,11 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { LightComponent } from './main/components/light/light.component';
 import { SettingsComponent } from './settings/settings.component';
+import { WeatherComponent } from './main/components/weather/weather.component';
 
 import { SettingsService } from './settings/service/settings.service'
 import { DomoticzApiService } from './main/service/domoticz-api.service';
+import { OpenWeatherMapApiService } from './main/components/weather/service/open-weather-map-api.service';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -25,7 +27,8 @@ const appRoutes: Routes = [
     AppComponent,
     MainComponent,
     SettingsComponent,
-    LightComponent
+    LightComponent,
+    WeatherComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -35,7 +38,7 @@ const appRoutes: Routes = [
     JsonpModule,
     MaterialModule
   ],
-  providers: [SettingsService, DomoticzApiService],
+  providers: [SettingsService, DomoticzApiService, OpenWeatherMapApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
