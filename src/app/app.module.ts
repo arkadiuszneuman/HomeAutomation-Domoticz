@@ -5,6 +5,8 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 
+import { default as Ng2WeatherIconsModule } from 'ng2-weather-icons';
+
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     JsonpModule,
-    MaterialModule
+    MaterialModule,
+    Ng2WeatherIconsModule 
   ],
   providers: [SettingsService, DomoticzApiService, OpenWeatherMapApiService],
   bootstrap: [AppComponent]
