@@ -15,7 +15,9 @@ export class WeatherComponent implements OnInit {
 
   public clicked() {
     this.apiService.getCurrentWeather()
-      .subscribe(weather => console.log(weather));
+      .subscribe(weather => { 
+        console.log(weather)
+      });
   }
 
 }

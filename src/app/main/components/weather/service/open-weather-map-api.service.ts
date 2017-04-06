@@ -46,7 +46,7 @@ export class OpenWeatherMapApiService {
       this.weather.lastSearchTime = new Date();
       const settings = this.settingsService.get();
 
-      const query = `${this.server}weather?id=7530992&APPID=${settings.openStreetMapApiKey}&units=metric`;
+      const query = `${this.server}weather?id=7530992&APPID=${settings.openWeatherMapApiKey}&units=metric`;
 
       return this.http.get(query)
         .map(c => {
@@ -59,7 +59,10 @@ export class OpenWeatherMapApiService {
           return this.weather;
         });
     } else {
-      
+      return Observable.create(subscriber => {
+        subscriber.next(this.weather);
+        subscriber.complete();
+      });
     }
   }
 

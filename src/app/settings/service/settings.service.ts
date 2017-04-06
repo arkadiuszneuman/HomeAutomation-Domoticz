@@ -4,7 +4,7 @@ export class Settings {
   public login: string;
   public password: string;
 
-  public openStreetMapApiKey: string;
+  public openWeatherMapApiKey: string;
 }
 
 @Injectable()
@@ -13,7 +13,7 @@ export class SettingsService {
   private settings: Settings;
   private domoticzLoginName = "domoticzLogin";
   private domoticzPassName = "domoticzPass";
-  private openStreetMapApiKey = "openStreetMapApiKey";
+  private openWeatherMapApiKey = "openWeatherMapApiKey";
 
   constructor() { 
   }
@@ -23,7 +23,7 @@ export class SettingsService {
     this.settings = new Settings();
     this.settings.login = localStorage.getItem(this.domoticzLoginName);
     this.settings.password = localStorage.getItem(this.domoticzPassName);
-    this.settings.openStreetMapApiKey = localStorage.getItem(this.openStreetMapApiKey);
+    this.settings.openWeatherMapApiKey = localStorage.getItem(this.openWeatherMapApiKey);
 
     return this.settings;
   }
@@ -42,6 +42,6 @@ export class SettingsService {
 
       localStorage.setItem(this.domoticzLoginName, this.settings.login);
       localStorage.setItem(this.domoticzPassName, this.settings.password);
-      localStorage.setItem(this.openStreetMapApiKey, this.settings.openStreetMapApiKey);
+      localStorage.setItem(this.openWeatherMapApiKey, this.settings.openWeatherMapApiKey);
   }
 }
