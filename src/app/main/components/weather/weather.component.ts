@@ -6,7 +6,7 @@ import { WeatherNameToIconPipe } from 'ng2-weather-icons';
 @Component({
   selector: 'weather',
   templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.css']
+  styleUrls: ['./weather.component.scss']
 })
 export class WeatherComponent implements OnInit {
 
