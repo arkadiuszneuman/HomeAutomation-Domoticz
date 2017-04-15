@@ -1,13 +1,11 @@
-<md-card>
+<md-card class="main">
     <div class="main-weather-info">
-        <button (click)="clicked()">click</button>
-        <i [ngClass]="weatherIcon"></i>
-        <br>
-        Temp: {{temp}}℃
-        <br>
-        Ciśnienie {{pressure}}hPa
-        <br>
-        Wilgotność {{humidity}} %
+        <div class="day-name">{{ weatherForDate | date:'EEEE' }}</div>
+        <!--<button (click)="clicked()">click</button>-->
+        <div class="weather">
+            <i [ngClass]="weatherIcon"></i>
+            <div>{{temp}}<span class="unit-celsius">℃</span></div>
+        </div>
     </div>
 
     <div class="right-info" md-card-image>
@@ -30,5 +28,4 @@
             </div>
         </div>
     </div>
-
 </md-card>

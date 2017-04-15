@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     MaterialModule,
     Ng2WeatherIconsModule 
   ],
-  providers: [SettingsService, DomoticzApiService, OpenWeatherMapApiService],
+  providers: [{ provide: LOCALE_ID, useValue: "pl-PL" },
+    SettingsService, DomoticzApiService, OpenWeatherMapApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

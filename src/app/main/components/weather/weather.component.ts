@@ -17,6 +17,7 @@ export class WeatherComponent implements OnInit {
   public humidity: number;
   public clouds: number;
   public wind: number;
+  public weatherForDate: Date;
 
   constructor(private apiService: OpenWeatherMapApiService,
     private weatherNameToIconPipe: WeatherNameToIconPipe) { }
@@ -36,11 +37,12 @@ export class WeatherComponent implements OnInit {
         console.log(weather);
         
         this.weatherIcon = 'wi ' + this.weatherNameToIconPipe.transform(weather.weather[0].id);
-        this.temp = Math.round(weather.main.temp * 10) / 10;
+        this.temp = Math.round(weather.main.temp);
         this.pressure = weather.main.pressure;
         this.humidity = weather.main.humidity;
         this.clouds = weather.clouds.all;
         this.wind = Math.round(weather.wind.speed);
+        this.weatherForDate = weather.lastSearchTime;
       });
   }
 }

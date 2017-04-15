@@ -1,15 +1,42 @@
 $height: 300px;
 $margin: 25px;
+$color: #3F51B5;
+
 i {
-  font-size: 100px;
+  
 }
 
-md-card {
-  height: $height;
+.main {
+    height: $height;
+    display: flex;
+
+    .main-weather-info {
+        flex-grow: 1;
+        margin-right: $margin * 2;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Roboto';
+        font-weight: bold;
+
+        .day-name {
+            text-transform: capitalize;
+            color: $color;
+            font-size: 50px;
+        }
+
+        .weather {
+            display: flex;
+            font-size: 100px;
+        }
+
+        .unit-celsius {
+                font-size: 10px;
+            }
+    }
 }
 
 .right-info {
-  background-color: #3F51B5;
+  background-color: $color;
   height: $height + $margin * 2;
   width: 220px;
   float: right;
@@ -57,8 +84,4 @@ md-card {
     flex-direction: row;
     align-items: center;
   }
-}
-
-.main-weather-info {
-  float: left;
 }
