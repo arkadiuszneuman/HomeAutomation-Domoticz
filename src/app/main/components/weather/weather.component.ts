@@ -15,6 +15,8 @@ export class WeatherComponent implements OnInit {
   public temp: number;
   public pressure: number;
   public humidity: number;
+  public clouds: number;
+  public wind: number;
 
   constructor(private apiService: OpenWeatherMapApiService,
     private weatherNameToIconPipe: WeatherNameToIconPipe) { }
@@ -37,6 +39,8 @@ export class WeatherComponent implements OnInit {
         this.temp = Math.round(weather.main.temp * 10) / 10;
         this.pressure = weather.main.pressure;
         this.humidity = weather.main.humidity;
+        this.clouds = weather.clouds.all;
+        this.wind = Math.round(weather.wind.speed);
       });
   }
 }
