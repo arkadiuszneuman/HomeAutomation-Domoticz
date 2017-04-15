@@ -1,3 +1,64 @@
+$height: 300px;
+$margin: 25px;
 i {
-    font-size: 100px;
+  font-size: 100px;
+}
+
+md-card {
+  height: $height;
+}
+
+.right-info {
+  background-color: #3F51B5;
+  height: $height + $margin * 2;
+  width: 200px;
+  float: right;
+  margin-top: -$margin;
+  color: white;
+  font-family: 'Roboto';
+  font-weight: bold;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  i {
+      font-size: 50px;
+      width: 120px;
+      text-align: center;
+  }
+
+  .text {
+      font-size: 40px;
+      width: 120px;
+      text-align: right;
+      white-space: nowrap;
+      margin-right: 20px;
+
+      &--small {
+          font-size: 30px;
+      }
+
+      &-unit {
+        font-size: 20px;
+        margin-top: 15px;
+
+        &--small {
+            margin-top: 8px;
+        }
+      }
+  }
+
+  > div {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.main-weather-info {
+  float: left;
 }

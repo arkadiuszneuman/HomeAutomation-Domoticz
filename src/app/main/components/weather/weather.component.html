@@ -1,9 +1,34 @@
-<button (click)="clicked()">click</button>
+<md-card>
+    <div class="main-weather-info">
+        <button (click)="clicked()">click</button>
+        <i [ngClass]="weatherIcon"></i>
+        <br>
+        Temp: {{temp}}℃
+        <br>
+        Ciśnienie {{pressure}}hPa
+        <br>
+        Wilgotność {{humidity}} %
+    </div>
 
-<i [ngClass]="weatherIcon"></i>
-<br>
-Temp: {{temp}}℃
-<br>
-Ciśnienie {{pressure}}hPa
-<br>
-Wilgotność {{humidity}} %
+    <div class="right-info" md-card-image>
+        <div class="clouds">
+            <i class="wi wi-cloud"></i>
+            <div class="text">10<span class="text-unit">%</span></div>
+        </div>
+        <div class="humidity">
+            <i class="wi wi-raindrop"></i>
+            <div class="text">10<span class="text-unit">%</span></div>
+        </div>
+        <div class="wind">
+            <i class="wi wi-strong-wind"></i>
+            <div class="text">9 <span class="text-unit">km/h</span></div> 
+        </div>
+        <div class="pressure">
+            <i class="wi wi-barometer"></i>
+            <div class="text text--small">
+                1014 <span class="text-unit text-unit--small">hPa</span>
+            </div>
+        </div>
+    </div>
+
+</md-card>
