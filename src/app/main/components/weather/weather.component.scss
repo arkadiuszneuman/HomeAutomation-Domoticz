@@ -2,10 +2,6 @@ $height: 300px;
 $margin: 25px;
 $color: #3F51B5;
 
-i {
-  
-}
-
 .main {
     height: $height;
     display: flex;
@@ -27,11 +23,27 @@ i {
         .weather {
             display: flex;
             font-size: 100px;
-        }
+            margin-top: 20px;
+            align-self: center;
 
-        .unit-celsius {
-                font-size: 10px;
+            .weather-icon {
+                color: #FFC107;
             }
+
+            .temp {
+                display: flex;
+                margin-left: 20px;
+                font-weight: 400;
+                font-size: 130px;
+                margin-top: -19px;
+                
+                .unit-celsius {
+                    font-size: 34px;
+                    vertical-align: text-top;
+                    margin-top: 20px;
+                }
+            }
+        }
     }
 }
 

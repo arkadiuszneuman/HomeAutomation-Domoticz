@@ -3,8 +3,8 @@
         <div class="day-name">{{ weatherForDate | date:'EEEE' }}</div>
         <!--<button (click)="clicked()">click</button>-->
         <div class="weather">
-            <i [ngClass]="weatherIcon"></i>
-            <div>{{temp}}<span class="unit-celsius">℃</span></div>
+            <i class="weather-icon" [ngClass]="weatherIcon"></i>
+            <div class="temp">{{temp}}<div class="unit-celsius">°C</div></div>
         </div>
     </div>
 
