@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OpenWeatherMapApiService, Forecast } from '../service/open-weather-map-api.service'
 
 @Component({
   selector: 'weather-chart',
@@ -7,15 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeatherChartComponent implements OnInit {
 
-  constructor() { }
+  public lineChartData: Array<number[]>;
+  public lineChartLabels: Array<string> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+  constructor(private apiService: OpenWeatherMapApiService) { }
 
   ngOnInit() {
+    this.lineChartData = new Array<number[]>();
+
+    this.apiService.getForecast()
+      .subscribe(forecast => {
+        console.log(forecast);
+        this.prepareData(forecast);
+      });
   }
 
-  public lineChartData:Array<number[]> = [
-     [65, 59, 80, 81, 56, 55, 40]
-  ];
-  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  private prepareData(forecast: Forecast) {
+    const chartData: number[] = [];
+    const chartLabels: string[] = [];
+
+    for (let i = 0; i < 5; ++i) {
+      chartData[i] = forecast.list[i].main.temp;
+      var time = new Date(forecast.list[i].dt * 1000);
+      chartLabels[i] = time.getHours() + 'h' + time.getMinutes();
+    }
+
+    this.lineChartData[0] = chartData;
+    this.lineChartLabels = chartLabels;
+  }
+
   public lineChartOptions:any = {
     responsive: true,
     maintainAspectRatio: false
