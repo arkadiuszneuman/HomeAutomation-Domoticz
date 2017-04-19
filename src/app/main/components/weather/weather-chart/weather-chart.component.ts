@@ -29,7 +29,8 @@ export class WeatherChartComponent implements OnInit {
 
     for (let i = 0; i < 5; ++i) {
       chartData[i] = forecast.list[i].main.temp;
-      var time = new Date(forecast.list[i].dt * 1000);
+      let time = new Date(forecast.list[i].dt * 1000);
+      time = this.convertToLocalTime(time);
       chartLabels[i] = time.getHours() + 'h' + time.getMinutes();
     }
 
@@ -37,16 +38,25 @@ export class WeatherChartComponent implements OnInit {
     this.lineChartLabels = chartLabels;
   }
 
+  private convertToLocalTime(date: Date) {
+    const offset = new Date().getTimezoneOffset();
+    var newDate = new Date(date.getTime());
+    
+    newDate.setMinutes(newDate.getMinutes() + offset);
+
+    return newDate;
+  }
+
   public lineChartOptions:any = {
     responsive: true,
     maintainAspectRatio: false
   };
   public lineChartColors:Array<any> = [
-    { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
-      pointBorderColor: '#fff',
+    {
+      backgroundColor: '#FFF5CC',
+      borderColor: '#FFCC00',
+      pointBackgroundColor: '#FFF5CC',
+      pointBorderColor: '#FFCC00',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
