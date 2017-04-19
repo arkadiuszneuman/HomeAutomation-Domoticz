@@ -1,13 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 
+import { ChartsModule } from 'ng2-charts';
 import { default as Ng2WeatherIconsModule } from 'ng2-weather-icons';
 
 import 'hammerjs';
+import 'chart.js'
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -18,6 +21,7 @@ import { WeatherComponent } from './main/components/weather/weather.component';
 import { SettingsService } from './settings/service/settings.service'
 import { DomoticzApiService } from './main/service/domoticz-api.service';
 import { OpenWeatherMapApiService } from './main/components/weather/service/open-weather-map-api.service';
+import { WeatherChartComponent } from './main/components/weather/weather-chart/weather-chart.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -30,7 +34,8 @@ const appRoutes: Routes = [
     MainComponent,
     SettingsComponent,
     LightComponent,
-    WeatherComponent
+    WeatherComponent,
+    WeatherChartComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -39,9 +44,11 @@ const appRoutes: Routes = [
     HttpModule,
     JsonpModule,
     MaterialModule,
-    Ng2WeatherIconsModule 
+    Ng2WeatherIconsModule,
+    ChartsModule
   ],
-  providers: [SettingsService, DomoticzApiService, OpenWeatherMapApiService],
+  providers: [{ provide: LOCALE_ID, useValue: "pl-PL" },
+    SettingsService, DomoticzApiService, OpenWeatherMapApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

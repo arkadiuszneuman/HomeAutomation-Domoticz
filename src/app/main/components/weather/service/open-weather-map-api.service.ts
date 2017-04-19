@@ -6,20 +6,37 @@ import { Observable } from "rxjs/Observable";
 
 import { SettingsService, Settings } from "../../../../settings/service/settings.service";
 
-export class CurrentWeather {
-  test?: number;
+export class Weather {
   lastSearchTime?: Date;
+  dt?: number;
+  name?: string;
+
+  main?: MainWeatherInfo;
+}
+
+export class MainWeatherInfo {
+  humidity?: number;
+  pressure?: number;
+  temp?: number;
+  temp_max?: number;
+  temp_min?: number;
+}
+
+export class Forecast {
+  lastSearchTime?: Date;
+  list?: Array<Weather>;
 }
 
 @Injectable()
 export class OpenWeatherMapApiService {
 
   private server = 'http://api.openweathermap.org/data/2.5/';
-  private weather: CurrentWeather = {};
+  private weather: Weather;
+  private forecast: Forecast;
 
   private waitMinutes = 10;
   private weatherKey = "weatherKey";
-
+  private forecastKey = "forecastKey";
 
   constructor(private http: Http, private settingsService: SettingsService) {
     var weatherString = localStorage.getItem(this.weatherKey);
@@ -27,6 +44,13 @@ export class OpenWeatherMapApiService {
       this.weather = JSON.parse(weatherString, this.dateTimeReviver);
     } else {
       this.weather = {}
+    }
+
+    var forecastString = localStorage.getItem(this.forecastKey);
+    if (forecastString != null) {
+      this.forecast = JSON.parse(forecastString, this.dateTimeReviver);
+    } else {
+      this.forecast = {}
     }
   }
 
@@ -61,6 +85,31 @@ export class OpenWeatherMapApiService {
     } else {
       return Observable.create(subscriber => {
         subscriber.next(this.weather);
+        subscriber.complete();
+      });
+    }
+  }
+
+  public getForecast(): Observable<Forecast> {
+    if (this.shouldSearch(this.forecast.lastSearchTime)) {
+      this.forecast.lastSearchTime = new Date();
+      const settings = this.settingsService.get();
+
+      const query = `${this.server}forecast?id=7530992&APPID=${settings.openWeatherMapApiKey}&units=metric`;
+
+      return this.http.get(query)
+        .map(c => {
+
+          this.forecast = c.json();
+          this.forecast.lastSearchTime = new Date();
+
+          localStorage.setItem(this.forecastKey, JSON.stringify(this.forecast));
+
+          return this.forecast;
+        });
+    } else {
+      return Observable.create(subscriber => {
+        subscriber.next(this.forecast);
         subscriber.complete();
       });
     }

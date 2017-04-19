@@ -1,9 +1,32 @@
-<button (click)="clicked()">click</button>
+<md-card class="main">
+    <div class="main-weather-info">
+        <div class="day-name">{{ weatherForDate | date:'EEEE' }}</div>
+        <!--<button (click)="clicked()">click</button>-->
+        <div class="weather">
+            <i class="weather-icon" [ngClass]="weatherIcon"></i>
+            <div class="temp">{{temp}}<div class="unit-celsius">°C</div></div>
+        </div>
+        <weather-chart></weather-chart>
+    </div>
 
-<ng2-wi [name]="weatherIcon" [size]="'2'" [mode]="'day'"></ng2-wi>
-<br>
-Temp: {{temp}}℃
-<br>
-Ciśnienie {{pressure}}hPa
-<br>
-Wilgotność {{humidity}} %
+    <div class="right-info" md-card-image>
+        <div class="clouds">
+            <i class="wi wi-cloud"></i>
+            <div class="text">{{clouds}}<span class="text-unit">%</span></div>
+        </div>
+        <div class="humidity">
+            <i class="wi wi-raindrop"></i>
+            <div class="text">{{humidity}}<span class="text-unit">%</span></div>
+        </div>
+        <div class="wind">
+            <i class="wi wi-strong-wind"></i>
+            <div class="text">{{wind}} <span class="text-unit">km/h</span></div> 
+        </div>
+        <div class="pressure">
+            <i class="wi wi-barometer"></i>
+            <div class="text text--small">
+                {{pressure}} <span class="text-unit text-unit--small">hPa</span>
+            </div>
+        </div>
+    </div>
+</md-card>

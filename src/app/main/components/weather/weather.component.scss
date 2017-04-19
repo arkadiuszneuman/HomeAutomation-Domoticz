@@ -1,0 +1,99 @@
+$height: 300px;
+$margin: 25px;
+$color: #3F51B5;
+
+.main {
+    height: $height;
+    display: flex;
+
+    .main-weather-info {
+        flex-grow: 1;
+        margin-right: $margin * 2;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Roboto';
+        font-weight: bold;
+
+        .day-name {
+            text-transform: capitalize;
+            color: $color;
+            font-size: 50px;
+        }
+
+        .weather {
+            display: flex;
+            font-size: 100px;
+            margin-top: 20px;
+            align-self: center;
+
+            .weather-icon {
+                color: #FFC107;
+            }
+
+            .temp {
+                display: flex;
+                margin-left: 20px;
+                font-weight: 400;
+                font-size: 130px;
+                margin-top: -19px;
+                
+                .unit-celsius {
+                    font-size: 34px;
+                    vertical-align: text-top;
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+}
+
+.right-info {
+  background-color: $color;
+  height: $height + $margin * 2;
+  width: 220px;
+  float: right;
+  margin-top: -$margin;
+  color: white;
+  font-family: 'Roboto';
+  font-weight: bold;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  i {
+      font-size: 50px;
+      width: 120px;
+      text-align: center;
+  }
+
+  .text {
+      font-size: 40px;
+      width: 120px;
+      text-align: right;
+      white-space: nowrap;
+      margin-right: 20px;
+
+      &--small {
+          font-size: 30px;
+      }
+
+      &-unit {
+        font-size: 20px;
+        margin-top: 15px;
+
+        &--small {
+            margin-top: 8px;
+        }
+      }
+  }
+
+  > div {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
