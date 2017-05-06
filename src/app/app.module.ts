@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 
 import { ChartsModule } from 'ng2-charts';
-import { default as Ng2WeatherIconsModule } from 'ng2-weather-icons';
+import Ng2WeatherIconsModule from 'ng2-weather-icons';
 
 import 'hammerjs';
 import 'chart.js'
