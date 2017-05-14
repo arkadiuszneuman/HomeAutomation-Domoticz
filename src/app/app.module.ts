@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 
 import { ChartsModule } from 'ng2-charts';
-import Ng2WeatherIconsModule from 'ng2-weather-icons';
+// import { Ng2WeatherIconsModule } from 'ng2-weather-icons';
 
 import 'hammerjs';
 import 'chart.js'
@@ -44,7 +44,7 @@ const appRoutes: Routes = [
     HttpModule,
     JsonpModule,
     MaterialModule,
-    Ng2WeatherIconsModule,
+    // Ng2WeatherIconsModule,
     ChartsModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: "pl-PL" },
