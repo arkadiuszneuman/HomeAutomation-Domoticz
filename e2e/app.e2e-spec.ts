@@ -1,14 +1,14 @@
-import { HomeAutomationSystem2Page } from './app.po';
+import { HASPage } from './app.po';
 
-describe('home-automation-system2 App', () => {
-  let page: HomeAutomationSystem2Page;
+describe('has App', () => {
+  let page: HASPage;
 
   beforeEach(() => {
-    page = new HomeAutomationSystem2Page();
+    page = new HASPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });

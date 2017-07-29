@@ -15,7 +15,7 @@ class SwitchableLight extends Light {
 })
 export class LightComponent implements OnInit {
 
-  private lights: SwitchableLight[];
+  public lights: SwitchableLight[];
   constructor(private domoticzApi: DomoticzApiService) { }
 
   ngOnInit() {

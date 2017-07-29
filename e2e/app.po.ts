@@ -1,6 +1,6 @@
-import { browser, element, by } from 'protractor';
+import { browser, by, element } from 'protractor';
 
-export class HomeAutomationSystem2Page {
+export class HASPage {
   navigateTo() {
     return browser.get('/');
   }
