@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsService, Settings } from '../../../settings/service/settings.service'
 import { DomoticzApiService, Light } from '../../service/domoticz-api.service';
+import { SpeechRecognitionService } from '../../speechRecognition/speech-recognition.service';
+import { SpeechSynthesisService } from '../../speechRecognition/speech-synthesis.service';
 
 import { Observable } from "rxjs/Observable";
 
@@ -16,10 +18,38 @@ class SwitchableLight extends Light {
 export class LightComponent implements OnInit {
 
   public lights: SwitchableLight[];
-  constructor(private domoticzApi: DomoticzApiService) { }
+  public speechData;
+  constructor(private domoticzApi: DomoticzApiService,
+    private speechRecognitionService: SpeechRecognitionService,
+    private speechSynthesisService: SpeechSynthesisService) { }
 
   ngOnInit() {
     this.getLights();
+    this.startRecognition();
+  }
+
+  private startRecognition() {
+    this.speechRecognitionService.record()
+            .subscribe(
+            //listener
+            (value) => {
+                this.speechData = value;
+                console.log(value);
+                
+            },
+            //errror
+            (err) => {
+                console.log(err);
+                if (err.error == "no-speech") {
+                    console.log("--restarting service--");
+                    this.startRecognition();
+                }
+            },
+            //completion
+            () => {
+                console.log("--complete--");
+                this.startRecognition();
+            });
   }
 
   private getLights() {

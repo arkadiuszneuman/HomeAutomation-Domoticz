@@ -18,11 +18,13 @@ import { MainComponent } from './main/main.component';
 import { LightComponent } from './main/components/light/light.component';
 import { SettingsComponent } from './settings/settings.component';
 import { WeatherComponent } from './main/components/weather/weather.component';
+import { WeatherChartComponent } from './main/components/weather/weather-chart/weather-chart.component';
 
 import { SettingsService } from './settings/service/settings.service'
 import { DomoticzApiService } from './main/service/domoticz-api.service';
 import { OpenWeatherMapApiService } from './main/components/weather/service/open-weather-map-api.service';
-import { WeatherChartComponent } from './main/components/weather/weather-chart/weather-chart.component';
+import { SpeechRecognitionService } from './main/speechRecognition/speech-recognition.service';
+import { SpeechSynthesisService } from './main/speechRecognition/speech-synthesis.service';
 
 
 const appRoutes: Routes = [
@@ -46,12 +48,12 @@ const appRoutes: Routes = [
     HttpModule,
     JsonpModule,
     MaterialModule,
-    // Ng2WeatherIconsModule,
     ChartsModule,
     BrowserAnimationsModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: "pl-PL" },
-    SettingsService, DomoticzApiService, OpenWeatherMapApiService],
+    SettingsService, DomoticzApiService, OpenWeatherMapApiService, SpeechRecognitionService,
+      SpeechSynthesisService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
