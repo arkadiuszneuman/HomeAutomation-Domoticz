@@ -25,7 +25,10 @@ import { DomoticzApiService } from './main/service/domoticz-api.service';
 import { OpenWeatherMapApiService } from './main/components/weather/service/open-weather-map-api.service';
 import { SpeechRecognitionService } from './main/speechRecognition/speech-recognition.service';
 import { SpeechSynthesisService } from './main/speechRecognition/speech-synthesis.service';
-
+import { RecognitionFactoryService } from './main/speechRecognition/recognitionInstances/recognition-factory.service';
+import { MainKeywordRecognitionService } from './main/speechRecognition/recognitionInstances/main-keyword-recognition.service';
+import { LightRecognitionService } from './main/speechRecognition/recognitionInstances/light-recognition.service';
+import { SpeechRecognitionManagerService } from './main/speechRecognition/speech-recognition-manager.service';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -53,7 +56,8 @@ const appRoutes: Routes = [
   ],
   providers: [{ provide: LOCALE_ID, useValue: "pl-PL" },
     SettingsService, DomoticzApiService, OpenWeatherMapApiService, SpeechRecognitionService,
-      SpeechSynthesisService],
+      SpeechSynthesisService, RecognitionFactoryService, MainKeywordRecognitionService,
+      LightRecognitionService, SpeechRecognitionManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
